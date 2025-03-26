@@ -13,10 +13,10 @@ st.markdown("""
 col1, col2 = st.columns(2)
 
 with col1:
-    weight = st.number_input("🔢 Enter your weight in kg:", min_value=1.0, format="%.2f")
+    weight = st.number_input("🔢 weight(kg)", min_value=1.0, format="%.2f")
 
 with col2:
-    height = st.number_input("📏 Enter your height in meters:", min_value=0.5, format="%.2f")  # Min height 0.5m
+    height = st.number_input("📏 height(m):", min_value=1.0, format="%.2f")  # Min height 0.5m
 
 # BMI Calculation
 if weight > 0 and height > 0:
