@@ -13,15 +13,16 @@ st.markdown("""
 col1, col2 = st.columns(2)
 
 with col1:
-    weight = st.number_input("🔢 weight(kg)", min_value=1.0, format="%.2f")
+    weight = st.number_input("🔢 Enter your weight in kg:", min_value=1.0, format="%.2f")
 
 with col2:
-    height = st.number_input("📏 height(m):", min_value=1.0, format="%.2f")  # Min height 0.5m
+    height = st.number_input("📏 Enter your height in cm:", min_value=50.0, format="%.2f")  # Minimum height set to 50 cm
 
 # BMI Calculation
 if weight > 0 and height > 0:
-    bmi = weight / (height ** 2)  # ✅ Corrected formula (NO /100)
-    
+    height_in_meters = height / 100  # ✅ Convert cm to meters
+    bmi = weight / (height_in_meters ** 2)  # ✅ Corrected formula
+
     st.subheader("📊 Your BMI is:")
     st.markdown(f"**{bmi:.2f}**", unsafe_allow_html=True)
 
