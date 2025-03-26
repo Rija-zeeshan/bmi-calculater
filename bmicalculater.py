@@ -16,12 +16,11 @@ with col1:
     weight = st.number_input("🔢 Enter your weight in kg:", min_value=1.0, format="%.2f")
 
 with col2:
-    height = st.number_input("📏 Enter your height in cm:", min_value=50.0, format="%.2f")  # Minimum height set to 50 cm
+    height = st.number_input("📏 Enter your height in meters:", min_value=0.5, format="%.2f")  # Directly in meters
 
 # BMI Calculation
 if weight > 0 and height > 0:
-    height_in_meters = height / 100  # ✅ Convert cm to meters
-    bmi = weight / (height_in_meters ** 2)  # ✅ Corrected formula
+    bmi = weight / (height ** 2)  # ✅ Directly using meters
 
     st.subheader("📊 Your BMI is:")
     st.markdown(f"**{bmi:.2f}**", unsafe_allow_html=True)
