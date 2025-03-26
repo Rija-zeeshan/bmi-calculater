@@ -14,7 +14,7 @@ col1, col2 = st.columns(2)
 with col1:
     weight = st.number_input("🔢 Enter your weight in kg:", min_value=1.0, format="%.2f")
 with col2:
-    height = st.number_input("📏 Enter your height in cm:", min_value=1.0, format="%.2f")
+    height = st.number_input("📏 Enter your height in m:", min_value=1.0, format="%.2f")
 
 # Ensure valid height is provided
 if height > 0:
