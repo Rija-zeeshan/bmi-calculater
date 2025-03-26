@@ -6,21 +6,22 @@ st.set_page_config(page_title="BMI CALCULATOR", page_icon="⚖️", layout="cent
 # Title
 st.title("⚖️ BMI CALCULATOR")
 st.markdown("""
-## 🏋️‍♂️ This BMI calculator helps you assess if you are underweight, normal weight, overweight, or obese.
+## 🏋️‍♂️ This BMI calculator helps you determine if you are underweight, normal weight, overweight, or obese.
 """)
 
 # Input Fields for Weight and Height
 col1, col2 = st.columns(2)
+
 with col1:
     weight = st.number_input("🔢 Enter your weight in kg:", min_value=1.0, format="%.2f")
+
 with col2:
-    height = st.number_input("📏 Enter your height in m:", min_value=1.0, format="%.2f")
+    height = st.number_input("📏 Enter your height in meters:", min_value=0.5, format="%.2f")  # Min height 0.5m
 
-# Ensure valid height is provided
-if height > 0:
-    height_in_meters = height / 100  # Convert cm to meters
-    bmi = weight / (height_in_meters ** 2)  # Correct BMI formula
-
+# BMI Calculation
+if weight > 0 and height > 0:
+    bmi = weight / (height ** 2)  # ✅ Corrected formula (NO /100)
+    
     st.subheader("📊 Your BMI is:")
     st.markdown(f"**{bmi:.2f}**", unsafe_allow_html=True)
 
@@ -33,5 +34,6 @@ if height > 0:
         st.warning("⚠️ You are overweight! 🚴 Consider regular exercise and a healthy diet.")
     else:
         st.error("⚠️ You are obese! 🏥 Consult a doctor for guidance on a healthier lifestyle.")
+
 else:
-    st.info("ℹ️ Please enter a valid height and weight.")
+    st.info("ℹ️ Please enter a valid weight and height.")
